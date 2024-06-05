@@ -3,3 +3,4 @@
 export(create_indicator_list)
 export(process_batch)
 export(pull_indicator_df)
+export(tbl_nat_disagg)
