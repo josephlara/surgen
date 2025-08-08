@@ -48,6 +48,10 @@ tbl_nat_disagg <- function(df, indicator, survey_year = 2022, breakdown = "Regio
     dplyr::pull(Indicator) |>
     unique()
 
+  indicator_definition <- df %>%
+    dplyr::pull(Definition) %>%
+    unique()
+
   df |>
     # dplyr::arrange(desc(Value)) |>
     dplyr::mutate(Value = Value / 100) |>
@@ -58,9 +62,9 @@ tbl_nat_disagg <- function(df, indicator, survey_year = 2022, breakdown = "Regio
                     decimals = 0) |>
     gt::sub_missing(missing_text = ".") |>
     gt::cols_hide(columns = c("CountryName", "DHS_CountryCode", "SurveyId", "Level1", "Indicator", "IndicatorId",
-                              "ByVariableLabel", "PublicationURL",  "SurveyYear",
+                              "ByVariableLabel", "PublicationURL",  "SurveyYear", "Definition", "TagIds",
                               "SurveyType", "CharacteristicCategory")) |>
-    gt::cols_label(CharacteristicLabel = breakdown, #change this to breakdown
+    gt::cols_label(CharacteristicLabel = breakdown,
                    Value = "Value",
                    CILow = "Lower Bound",
                    CIHigh = "Upper Bound") |>
@@ -80,7 +84,8 @@ tbl_nat_disagg <- function(df, indicator, survey_year = 2022, breakdown = "Regio
       )
     ) |>
     gt::tab_header(
-      title = glue("{indicator_label} ({survey_year})")) |>
+      title = glue("{indicator_label} ({survey_year})"),
+      subtitle = indicator_definition) |>
     gt::tab_source_note(
       source_note = gt::md(glue("Source:  {survey_source} {survey_year} \n
                                  https://www.statcompiler.com/"))) |>
