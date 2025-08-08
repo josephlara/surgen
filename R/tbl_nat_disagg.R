@@ -3,7 +3,7 @@
 #' @param df input dataframe
 #' @param indicator dhs indicador id to visualize
 #' @param survey_year survey year for desired indicator results
-#' @param breakdown indicator disaggregation type
+#' @param breakdown indicator disaggregation type (e.g. 'Region', 'Education', 'Residence')
 #' @param type value type (percentage vs absolute)
 #' @param reverse_ord sorting order for good results to bad
 #'
