@@ -56,6 +56,10 @@ plot_nat_disagg <- function(df, indicator, survey_year = 2022, breakdown = "Regi
     dplyr::pull(publication_url) |>
     unique()
 
+  indicator_definition <- df %>%
+    dplyr::pull(definition) %>%
+    unique()
+
 
   p <- df |>
     ggplot2::ggplot(aes(x = fct_reorder(characteristic_label, value, .desc = reverse_ord), y = value, fill = value)) +
@@ -102,7 +106,7 @@ plot_nat_disagg <- function(df, indicator, survey_year = 2022, breakdown = "Regi
     ggplot2::labs(x = "",
                   y = "",
                   title = glue("{indicator_label} ({survey_source} {survey_year})"),
-                  # subtitle = glue("{indicator_definition}"),
+                  subtitle = glue("{indicator_definition}"),
                   caption = glue("Source: {survey_source} {survey_year}
                                  https://www.statcompiler.com/
                                   {publication_url}"))
