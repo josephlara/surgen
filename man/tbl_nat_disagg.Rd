@@ -20,7 +20,7 @@ tbl_nat_disagg(
 
 \item{survey_year}{survey year for desired indicator results}
 
-\item{breakdown}{indicator disaggregation type}
+\item{breakdown}{indicator disaggregation type (e.g. 'Region', 'Education', 'Residence')}
 
 \item{type}{value type (percentage vs absolute)}
 
