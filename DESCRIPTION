@@ -18,4 +18,6 @@ Imports:
     janitor,
     rdhs,
     scales,
-    viridis
+    viridis,
+    forcats,
+    glue

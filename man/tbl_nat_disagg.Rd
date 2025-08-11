@@ -2,7 +2,7 @@
 % Please edit documentation in R/tbl_nat_disagg.R
 \name{tbl_nat_disagg}
 \alias{tbl_nat_disagg}
-\title{Create gt table of dhs indicator results and upper/lower bound}
+\title{Create gt table of DHS indicator results and bounds}
 \usage{
 tbl_nat_disagg(
   df,
@@ -10,30 +10,38 @@ tbl_nat_disagg(
   survey_year = 2022,
   breakdown = "Region",
   type = "Percent",
-  reverse_ord = FALSE
+  reverse_ord = FALSE,
+  info = TRUE
 )
 }
 \arguments{
 \item{df}{input dataframe}
 
-\item{indicator}{dhs indicador id to visualize}
+\item{indicator}{DHS indicator id to visualize}
 
 \item{survey_year}{survey year for desired indicator results}
 
 \item{breakdown}{indicator disaggregation type (e.g. 'Region', 'Education', 'Residence')}
 
-\item{type}{value type (percentage vs absolute)}
+\item{type}{value type ("Percent" vs "Absolute")}
 
-\item{reverse_ord}{sorting order for good results to bad}
+\item{reverse_ord}{logical; if TRUE, sort ascending (bad → good); if FALSE, sort descending (good → bad)}
+
+\item{info}{logical; include title, subtitle, and source note (default TRUE). If FALSE, these are omitted.}
 }
 \value{
-a gt table with dhs indicator results and upper and lower bound
+A \code{gt} table showing DHS indicator results with upper and lower bounds.
+When \code{info = FALSE}, the table excludes the header and source note.
 }
 \description{
-Create gt table of dhs indicator results and upper/lower bound
+Create gt table of DHS indicator results and bounds
 }
 \examples{
- \dontrun{
+\dontrun{
+# With header and source
+tbl_nat_disagg(df, indicator = "CH_VACC_C_OP3", survey_year = 2022)
 
- df <- tbl_nat_disagg()}
+# Minimal table (no header/source)
+tbl_nat_disagg(df, indicator = "CH_VACC_C_OP3", survey_year = 2022, info = FALSE)
+}
 }

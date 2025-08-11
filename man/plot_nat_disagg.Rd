@@ -11,7 +11,8 @@ plot_nat_disagg(
   breakdown = "Region",
   palette = "rocket",
   type = "Percent",
-  reverse_ord = FALSE
+  reverse_ord = FALSE,
+  info = TRUE
 )
 }
 \arguments{
@@ -28,6 +29,8 @@ plot_nat_disagg(
 \item{type}{value type (percentage vs absolute)}
 
 \item{reverse_ord}{sorting order for good results to bad}
+
+\item{info}{whether to include title, subtitle, and caption (default TRUE)}
 }
 \value{
 a bar graph with dhs indicator results
@@ -36,7 +39,7 @@ a bar graph with dhs indicator results
 Create bar graph of dhs indicator results
 }
 \examples{
- \dontrun{
-
- df <- plot_nat_disagg()}
+\dontrun{
+df <- plot_nat_disagg()
+}
 }
